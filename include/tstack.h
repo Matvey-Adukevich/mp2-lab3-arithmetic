@@ -4,7 +4,7 @@ template<typename T>
 class TStack
 {
 protected:
-	size_t curr;//вершина стека
+	int curr;//вершина стека
 	size_t n;//максимальное количество элементов в стеке
 	T* mem;
 public:

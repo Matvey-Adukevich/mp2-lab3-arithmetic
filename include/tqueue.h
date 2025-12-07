@@ -12,9 +12,13 @@ public:
 		return (i + 1) % n;
 	}
 
+	TQueue() : n(100), s(0), f(n-1) {
+		mem = new T[n];
+	}
+
 	TQueue(size_t _n) {
 		n = _n;
-		mem = nem T[n];
+		mem = new T[n];
 		s = 0;
 		f = n - 1;
 	}
@@ -23,7 +27,8 @@ public:
 		n = queue.n;
 		s = queue.s;
 		f = queue.f;
-		for (size_t i = 0; i != next(f); i = next(i)) {
+		mem = new T[n];
+		for (size_t i = s; i != next(f); i = next(i)) {
 			mem[i] = queue.mem[i];
 		}
 	}
@@ -59,7 +64,7 @@ public:
 		f = queue.f;
 		delete[] mem;
 		mem = new T[n];
-		if (f <= s) {
+		if (f < s) {
 			for (size_t i = s; i < n; i++) {
 				mem[i] = queue.mem[i];
 			}

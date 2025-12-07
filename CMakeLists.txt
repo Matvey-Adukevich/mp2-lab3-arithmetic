@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-set(PROJECT_NAME set)
+set(PROJECT_NAME arithmetic)
 project(${PROJECT_NAME})
 
 # TODO(Korniakov): not sure if these lines are needed
