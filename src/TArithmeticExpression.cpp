@@ -4,19 +4,27 @@
 #include <map>
 #include <string>
 #include "TStateMachineLexem.h"
+#include "TStateMachineCorrect.h"
 
 using namespace std;
 
 TArithmeticExpression::TArithmeticExpression(string _infix) :infix(_infix) {
 	priority = { {'+', 1}, {'-', 1}, {'*', 2}, {'/', 2}, {'(', 0} };
 	Parse();
-	ToPostfix();
+	if (isCorrect == true) {
+		ToPostfix();
+	}
+	else {
+		throw runtime_error("Not correct");
+	}
 }
 
 void TArithmeticExpression::Parse() {
 // тут будут и конечные автоматы, и проверка на правильность и корректность, итог -> получаем очередь из лексем в виде инфиксной формы
 	TStateMachineLexem machine(this->infix);
 	this->lexems = machine.parseWithFiniteAutomatonOrThrow();
+	TStateMachineCorrect machine2(this->lexems);
+	this->isCorrect = machine2.parseWithFiniteAutomatonOrThrow();
 	
 }
 

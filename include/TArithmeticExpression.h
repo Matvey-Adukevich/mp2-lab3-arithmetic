@@ -14,6 +14,7 @@ class TArithmeticExpression {
 	TQueue<string> lexems;
 	map<char, int> priority;
 	map<char, double> operands;
+	bool isCorrect;
 
 	void Parse();
 	void ToPostfix();

@@ -7,4 +7,4 @@
 #target_link_libraries(${target} ${LIBRARY_DEPS})
 add_library(${PROJECT_NAME} STATIC 
     TArithmeticExpression.cpp
- TStateMachineLexem.cpp)
+ TStateMachineLexem.cpp "TStateMachineCorrect.cpp")

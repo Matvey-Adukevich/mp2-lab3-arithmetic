@@ -8,7 +8,7 @@ protected:
 	size_t n;//максимальное количество элементов в стеке
 	T* mem;
 public:
-	TStack(size_t _n) {
+	TStack(size_t _n = 100) {
 		curr = -1;
 		n = _n;
 		mem = new T[n];
