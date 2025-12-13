@@ -20,7 +20,6 @@ TArithmeticExpression::TArithmeticExpression(string _infix) :infix(_infix) {
 }
 
 void TArithmeticExpression::Parse() {
-// тут будут и конечные автоматы, и проверка на правильность и корректность, итог -> получаем очередь из лексем в виде инфиксной формы
 	TStateMachineLexem machine(this->infix);
 	this->lexems = machine.parseWithFiniteAutomatonOrThrow();
 	TStateMachineCorrect machine2(this->lexems);

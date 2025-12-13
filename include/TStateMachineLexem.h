@@ -11,14 +11,29 @@ using namespace std;
 
 class TStateMachineLexem {
     string input;
-    enum State {
+    /*enum State {
         S0,
         S1,
         S2
+    };*/
+    enum State {
+        S0,
+        S1,
+        S2,
+        S3,
+        S4
     };
-    enum Signal {
+    /*enum Signal {
         Number,
         OperatorBracket,
+        Error
+    };*/
+    enum Signal {
+        Number,
+        OperatorMinus,
+        OperatorPlusMultDiv,
+        BracketOpen,
+        BracketClose,
         Error
     };
     enum State current_state;
@@ -74,11 +89,30 @@ public:
 
 
     Signal getSignal(char s);
-    void has_first_number(char c);
+    /*void has_first_number(char c);
     void has_operator(char c);
     void has_error(char c);
     void has_other_number(char c);
-    void has_number_and_operator(char c);
-
-   
+    void has_number_and_operator(char c);*/
+    void has_number0(char c);
+    void has_number1(char c);
+    void has_number2(char c);
+    void has_number3(char c);
+    void has_operator_minus0(char c);
+    void has_operator_minus1(char c);
+    void has_operator_minus2(char c);
+    void has_operator_minus3(char c);
+    void has_operator_plus_mult_div0(char c);
+    void has_operator_plus_mult_div1(char c);
+    void has_operator_plus_mult_div2(char c);
+    void has_operator_plus_mult_div3(char c);
+    void has_bracket_open0(char c);
+    void has_bracket_open1(char c);
+    void has_bracket_open2(char c);
+    void has_bracket_open3(char c);
+    void has_bracket_close0(char c);
+    void has_bracket_close1(char c);
+    void has_bracket_close2(char c);
+    void has_bracket_close3(char c);
+    void has_error(char c);
 };
