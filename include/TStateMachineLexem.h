@@ -48,6 +48,7 @@ class TStateMachineLexem {
     
     TQueue<string> output;
     string buffer;
+    int znak;
 
     map<State, map<Signal, transition>> transitionTable;//{
     //    {S0, {{Number, {S1,[this](char c){has_first_number(c); } }},{OperatorBracket, {S0, has_operator}},{Error, {S2, has_error}}} },

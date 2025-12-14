@@ -24,7 +24,7 @@ int main() {
         map<string, double> values3;
         cout << "Result: " << expr3.Calculate(values3) << endl;
 
-        TArithmeticExpression expr4("(12++32)*4");
+        TArithmeticExpression expr4("(12--32)*4");
         cout << "Infix: " << expr4.GetInfix() << endl;
         cout << "Postfix: " << expr4.GetPostfix() << endl;
         map<string, double> values4;

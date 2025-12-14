@@ -8,7 +8,7 @@ using namespace std;
 int main() {
 	string expr = "(()(";
 	TStack<int> stack(10);
-	TQueue<int> stack2(10);
+	TQueue<int> queue(10);
 	for (int i = 0; i < expr.length(); i++) {
 		if (expr[i] == '(') {
 			stack.push(i);
@@ -18,18 +18,22 @@ int main() {
 				stack.pop();
 			}
 			else {
-				stack2.push(i);
+				queue.push(i);
 			}
 		}
 	}
-	while (!stack.isEmpty()) {
-		stack2.push(stack.pop());
-	}
-	if (!stack2.isEmpty()) {
+	if (!queue.isEmpty() || !stack.isEmpty()) {
 		cout << "error";
 	}
-	while (!stack2.isEmpty()) {
-		cout << stack2.pop();
+	TStack<int> stack_per(10);
+	while (!stack.isEmpty()) {
+		stack_per.push(stack.pop());
+	}
+	while (!stack_per.isEmpty()) {
+		cout << stack_per.pop();
+	}
+	while (!queue.isEmpty()) {
+		cout << queue.pop();
 	}
 
 }

@@ -35,6 +35,7 @@ TStateMachineLexem::Signal TStateMachineLexem::getSignal(char s) {
 
 void TStateMachineLexem::has_number0(char c){
 	buffer = c;
+	znak = 0;
 }
 void TStateMachineLexem::has_number1(char c) {
 	buffer += c;
@@ -47,6 +48,9 @@ void TStateMachineLexem::has_number3(char c) {
 }
 
 void TStateMachineLexem::has_operator_minus0(char c) {
+	if (znak != 0) {
+		throw runtime_error("Not correct operator");
+	}
 	buffer = c;
 }
 void TStateMachineLexem::has_operator_minus2(char c) {
@@ -65,6 +69,7 @@ void TStateMachineLexem::has_operator_minus3(char c) {
 		buffer.clear();
 	}
 	output.push(string(1, c));
+	znak = 1;
 }
 
 void TStateMachineLexem::has_operator_plus_mult_div0(char c) {
@@ -181,7 +186,7 @@ TQueue<string> TStateMachineLexem::parseWithFiniteAutomatonOrThrow() {
 //	};
 //}
 
-TStateMachineLexem::TStateMachineLexem(const string& _input) :input(_input), current_state(S0) {
+TStateMachineLexem::TStateMachineLexem(const string& _input) :input(_input), current_state(S0), znak(0) {
 	transitionTable = {
 	{S0, {{Number, {S3,[this](char c) {has_number0(c); } }},{OperatorMinus, {S1, [this](char c) {has_operator_minus0(c); }}},{OperatorPlusMultDiv, {S0, [this](char c) {has_operator_plus_mult_div0(c); }}},{BracketOpen, {S0, [this](char c) {has_bracket_open0(c); }}},{BracketClose, {S0, [this](char c) {has_bracket_close0(c); }}}, {Error, {S4, [this](char c) {has_error(c); } }}}},
 	{S1, {{Number, {S2,[this](char c) {has_number1(c); } }},{OperatorMinus, {S4, [this](char c) {has_error(c); }}},{OperatorPlusMultDiv, {S4, [this](char c) {has_error(c); }}},{BracketOpen, {S0, [this](char c) {has_bracket_open1(c); }}},{BracketClose, {S4, [this](char c) {has_error(c); }}}, {Error, {S4, [this](char c) {has_error(c); } }}}},
