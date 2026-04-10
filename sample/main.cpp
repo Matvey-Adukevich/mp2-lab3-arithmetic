@@ -12,11 +12,37 @@ int main() {
         map<string, double> values;
         cout << "Result: " << expr.Calculate(values) << endl;
 
+        cout << "\n" << endl;
+
+        TArithmeticExpression expr10("-(-1)");
+        cout << "Infix: " << expr10.GetInfix() << endl;
+        cout << "Postfix: " << expr10.GetPostfix() << endl;
+        Expr* tree = expr10.MakeTree();
+        PrintVisitor pv;
+        tree->accept(&pv);
+        CalcVisitor cv;
+        std::cout << " RESULT: " << tree->accept(&cv) << std::endl;
+
+        cout << "\n" << endl;
+
         TArithmeticExpression expr2("-12+(-1+12)*4");
         cout << "Infix: " << expr2.GetInfix() << endl;
         cout << "Postfix: " << expr2.GetPostfix() << endl;
         map<string, double> values2;
         cout << "Result: " << expr2.Calculate(values2) << endl;
+
+        cout << "\n" << endl;
+
+        TArithmeticExpression expr20("-12+(-1+12)*4");
+        cout << "Infix: " << expr20.GetInfix() << endl;
+        cout << "Postfix: " << expr20.GetPostfix() << endl;
+        Expr* tree2 = expr20.MakeTree();
+        PrintVisitor pv2;
+        tree2->accept(&pv2);
+        CalcVisitor cv2;
+        std::cout << " RESULT: " << tree2->accept(&cv2) << std::endl;
+
+        cout << "\n" << endl;
 
         TArithmeticExpression expr3("(12+32)*4");
         cout << "Infix: " << expr3.GetInfix() << endl;

@@ -2,11 +2,13 @@
 
 #include "tqueue.h"
 #include "tstack.h"
+#include <TVisitor.h>
 #include <string>
 #include <vector>
 #include <map>
 
 using namespace std;
+
 
 class TArithmeticExpression {
 	string infix;
@@ -19,12 +21,14 @@ class TArithmeticExpression {
 	void Parse();
 	void ToPostfix();
 public:
+	TArithmeticExpression();
 	TArithmeticExpression(string infix);
 	string GetInfix();
 	string GetPostfix();
 	TQueue<string> GetPostfixQueue();
-
+	Expr* MakeTree();
 	vector<char> GetOperands() const;
 	double Calculate(const map<string, double>& values);
 
 };
+

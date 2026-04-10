@@ -109,3 +109,33 @@ double TArithmeticExpression::Calculate(const map<string, double>& values) {
 	return stack.pop();
 
 }
+
+TArithmeticExpression::TArithmeticExpression() {}
+
+
+
+Expr* TArithmeticExpression::MakeTree() {
+	TStack<Expr*> stack(100);
+	TQueue<string> tmp = postfix;
+	while (!tmp.isEmpty()) {
+		string elem = tmp.pop();
+		if (elem == "+" || elem == "-" || elem == "*" || elem == "/") {
+			Expr* right = stack.pop();
+			Expr* left = stack.pop();
+			stack.push(new BiOperation(elem, left, right));
+		}
+		else {
+			int val = stoi(elem);
+			stack.push(new Number(val));
+		}
+	}
+	return stack.pop();
+}
+
+
+
+
+
+
+
+
