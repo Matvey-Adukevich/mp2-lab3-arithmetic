@@ -9,7 +9,6 @@ class TVisitor {
 public:
 	virtual int visitNumber(Number* num) = 0;
 	virtual int visitBiOperation(BiOperation* op) = 0;
-	virtual ~TVisitor() {}
 };
 
 class Expr {
