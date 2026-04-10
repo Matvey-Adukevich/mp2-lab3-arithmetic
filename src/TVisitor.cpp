@@ -15,7 +15,10 @@ Expr* BiOperation::Left() { return this->left; }
 Expr* BiOperation::Right() { return this->right; }
 string BiOperation::Op() { return op; }
 int BiOperation::accept(TVisitor* v) { return v->visitBiOperation(this); }
-
+BiOperation::~BiOperation() {
+	delete left;
+	delete right;
+}
 
 
 

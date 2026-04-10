@@ -25,6 +25,7 @@ public:
 	Number(int _val);
 	int getVal();
 	int accept(TVisitor* v);
+	~Number() {}
 };
 
 class BiOperation : public Expr {
@@ -36,6 +37,7 @@ public:
 	Expr* Right();
 	string Op();
 	int accept(TVisitor* v);
+	~BiOperation();
 };
 
 class PrintVisitor : public TVisitor {

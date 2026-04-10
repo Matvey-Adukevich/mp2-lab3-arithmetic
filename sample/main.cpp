@@ -22,6 +22,7 @@ int main() {
         tree->accept(&pv);
         CalcVisitor cv;
         std::cout << " RESULT: " << tree->accept(&cv) << std::endl;
+        delete tree;
 
         cout << "\n" << endl;
 
@@ -41,6 +42,7 @@ int main() {
         tree2->accept(&pv2);
         CalcVisitor cv2;
         std::cout << " RESULT: " << tree2->accept(&cv2) << std::endl;
+        delete tree2;
 
         cout << "\n" << endl;
 
